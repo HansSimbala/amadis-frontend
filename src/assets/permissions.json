@@ -1,0 +1,10 @@
+[
+    {
+      "name": "Listar CLientes",
+      "slug": "customers-list"
+    },
+    {
+        "name": "Listar Pedidos",
+        "slug": "orders-list"
+    }
+]

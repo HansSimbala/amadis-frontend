@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { permissions } from "./permissions";
+
 
 @Component({
   selector: 'app-root',
@@ -6,8 +9,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  @Output() toggleSidenav = new EventEmitter<void>();
+  permissions = permissions;
   
   title = 'amadis-frontend';
 }

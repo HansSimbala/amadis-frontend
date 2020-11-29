@@ -10,12 +10,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SidenavComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

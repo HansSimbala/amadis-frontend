@@ -1,14 +1,32 @@
 <div class="container">
   <mat-sidenav-container>
-    
+
     <mat-toolbar class="app-root">
-      <button mat-icon-button (click)=toggleSidenav.emit()>
+      <button mat-icon-button (click)=sidenav.toggle()>
         <mat-icon>menu</mat-icon>
       </button>
       
       <span>AMADIS</span>
     
     </mat-toolbar>
+
+  <mat-sidenav #sidenav mode="over">
+
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <h2> AMADIS </h2>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-nav-list *ngFor="let permission of permissions">
+      <h2 matSubheader> Pedidos </h2>
+        <a mat-list-item (click)="sidenav.close()"><mat-icon matListIcon>home</mat-icon>{{ permission.name }}</a>
+
+      <mat-divider></mat-divider>
+    
+    </mat-nav-list>
+
+  </mat-sidenav>
 
   </mat-sidenav-container>
 
