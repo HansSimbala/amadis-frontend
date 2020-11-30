@@ -1,16 +1,15 @@
-<div class="container">
+  <mat-toolbar>
+    <button mat-icon-button (click)=sidenav.toggle()>
+      <mat-icon>menu</mat-icon>
+    </button>
+  
+    <a class="nav-link" [routerLink]="['/']"><span>AMADIS</span></a>
+
+  </mat-toolbar>
+ 
   <mat-sidenav-container>
 
-    <mat-toolbar class="app-root">
-      <button mat-icon-button (click)=sidenav.toggle()>
-        <mat-icon>menu</mat-icon>
-      </button>
-      
-      <span>AMADIS</span>
-    
-    </mat-toolbar>
-
-  <mat-sidenav #sidenav mode="over">
+    <mat-sidenav #sidenav mode="over">
 
     <mat-toolbar>
       <mat-toolbar-row>
@@ -27,7 +26,9 @@
     </mat-nav-list>
 
   </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 
-  </mat-sidenav-container>
-
-</div>
+</mat-sidenav-container>
