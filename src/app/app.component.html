@@ -1,4 +1,5 @@
   <mat-toolbar>
+    
     <button mat-icon-button (click)=sidenav.toggle()>
       <mat-icon>menu</mat-icon>
     </button>
@@ -19,7 +20,7 @@
 
     <mat-nav-list *ngFor="let permission of permissions">
       <h2 matSubheader> Pedidos </h2>
-        <a class="side-menu-link" mat-list-item (click)="sidenav.close()" [routerLink]="['/customers/list']">
+        <a class="side-menu-link" mat-list-item (click)="sidenav.close()" [routerLink]="[permission.slug]">
           <mat-icon matListIcon>home</mat-icon>{{ permission.name }}</a>
 
       <mat-divider></mat-divider>
