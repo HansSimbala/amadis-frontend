@@ -11,15 +11,16 @@
 
     <mat-sidenav #sidenav mode="over">
 
-    <mat-toolbar>
+   <!--  <mat-toolbar>
       <mat-toolbar-row>
         <h2> AMADIS </h2>
       </mat-toolbar-row>
-    </mat-toolbar>
+    </mat-toolbar> -->
 
     <mat-nav-list *ngFor="let permission of permissions">
       <h2 matSubheader> Pedidos </h2>
-        <a mat-list-item (click)="sidenav.close()"><mat-icon matListIcon>home</mat-icon>{{ permission.name }}</a>
+        <a class="side-menu-link" mat-list-item (click)="sidenav.close()" [routerLink]="['/customers/list']">
+          <mat-icon matListIcon>home</mat-icon>{{ permission.name }}</a>
 
       <mat-divider></mat-divider>
     
