@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { permissions } from "./permissions";
+import { roles } from "./roles";
 
 
 @Component({
@@ -10,6 +11,7 @@ import { permissions } from "./permissions";
 })
 export class AppComponent {
   permissions = permissions;
+  roles = roles;
   
   title = 'amadis-frontend';
 }

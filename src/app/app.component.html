@@ -1,34 +1,36 @@
-  <mat-toolbar>
-    
-    <button mat-icon-button (click)=sidenav.toggle()>
-      <mat-icon>menu</mat-icon>
-    </button>
-  
-    <a class="nav-link" [routerLink]="['/']"><span>AMADIS</span></a>
+<mat-toolbar>
 
-  </mat-toolbar>
- 
-  <mat-sidenav-container>
+  <button mat-icon-button (click)=sidenav.toggle()>
+    <mat-icon>menu</mat-icon>
+  </button>
 
-    <mat-sidenav #sidenav mode="over">
+  <a class="nav-link" [routerLink]="['/']"><span>AMADIS</span></a>
 
-   <!--  <mat-toolbar>
+</mat-toolbar>
+
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav mode="over">
+
+    <!--  <mat-toolbar>
       <mat-toolbar-row>
         <h2> AMADIS </h2>
       </mat-toolbar-row>
     </mat-toolbar> -->
 
-    <mat-nav-list *ngFor="let permission of permissions">
-      <h2 matSubheader> Pedidos </h2>
-        <a class="side-menu-link" mat-list-item (click)="sidenav.close()" [routerLink]="[permission.slug]">
-          <mat-icon matListIcon>home</mat-icon>{{ permission.name }}</a>
+    <mat-nav-list *ngFor="let rol of roles">
+      <h2 matSubheader> {{ rol.name }} </h2>
+      <a *ngFor="let permission of rol.permissions" class="side-menu-link" mat-list-item (click)="sidenav.close()"
+        [routerLink]="[permission.slug]">
+        <mat-icon matListIcon>{{ permission.icon }}</mat-icon>{{ permission.name }}
+      </a>
 
       <mat-divider></mat-divider>
-    
+
     </mat-nav-list>
 
   </mat-sidenav>
-  
+
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
