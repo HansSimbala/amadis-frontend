@@ -1,1 +1,66 @@
-<p>list works!</p>
+<section class="container">
+  <div>
+    <h1 class="table title">Lista de clientes</h1>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading">
+    <div>
+      <mat-spinner class="spinner-position"></mat-spinner>
+    </div>
+  </div>
+
+  <table mat-table [dataSource]="customerDataSource" class="mat-elevation-z8" [hidden]="isLoading">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef class="table title"> Id </th>
+      <td mat-cell *matCellDef="let element" class="table"> {{element.customerId}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="table title"> Nombre </th>
+      <td mat-cell *matCellDef="let element" class="table"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Last Name Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef class="table title"> Apellido </th>
+      <td mat-cell *matCellDef="let element" class="table"> {{element.lastName}} </td>
+    </ng-container>
+
+    <!-- Document Type Column -->
+    <ng-container matColumnDef="documentTypeId">
+      <th mat-header-cell *matHeaderCellDef class="table title"> Tipo de documento </th>
+      <td mat-cell *matCellDef="let element" class="table"> {{element.documentTypeId}} </td>
+    </ng-container>
+
+    <!-- Document Column -->
+    <ng-container matColumnDef="document">
+      <th mat-header-cell *matHeaderCellDef class="table title"> Documento </th>
+      <td mat-cell *matCellDef="let element" class="table"> {{element.document}} </td>
+    </ng-container>
+
+    <!-- Last Name Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="table title"> Acciones </th>
+      <td mat-cell *matCellDef="let element" class="table">
+        <button mat-icon-button>
+          <mat-icon matTooltip="Ver detalle" class="action-icon info" (click)="openInfoDialog(element.customerId)">info
+          </mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon matTooltip="Editar" class="action-icon edit">edit</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon matTooltip="Eliminar" class="action-icon delete" (click)="openDeleteDialog(element.customerId)">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  </table>
+</section>

@@ -1,0 +1,32 @@
+table {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.action-icon {
+    background: white;
+    margin: 2px;
+    border-radius: 5px;
+}
+.action-icon.delete {
+    color: #da1212;
+}
+.action-icon.info {
+    color: #024699 !important;
+}
+.action-icon.edit {
+    color: #e6c409 !important;
+}
+
+.spinner-position {
+    left: 50%;
+    margin-left: -4em;
+}
+
+.table {
+    text-align: center;
+}
+
+.table.title {
+    color: #000;
+}
