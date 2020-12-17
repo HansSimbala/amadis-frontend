@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DeleteComponent } from './delete/delete.component';
 import { EditComponent } from './edit/edit.component';
@@ -27,6 +28,7 @@ import { CreateComponent } from './create/create.component';
     MatProgressSpinnerModule,
     MatSnackBarModule,
     MatTableModule,
+    MatToolbarModule,
     MatTooltipModule,
     CustomersRoutingModule
   ]

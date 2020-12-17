@@ -1,6 +1,6 @@
 .nav-link {
     text-decoration: none;
-    color: black;
+    color: whitesmoke;
 }
 
 .side-menu-link {
@@ -9,10 +9,11 @@
     color: black;
 }
 
-.content {
-    padding: 5% 5% 100%;
-}
-
 .side-items {
     padding: 10px 50px 25px 20px;
+}
+
+.tool-bar-link {
+    background-color: #053F5E;
+    color: whitesmoke;
 }

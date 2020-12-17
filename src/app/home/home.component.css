@@ -3,6 +3,10 @@
     justify-content: center;
     margin: 100px 50px;
 }
+
+.content {
+    padding: 2.5% 5% 100%;
+}
   
 .button-flex {
     display: flex;

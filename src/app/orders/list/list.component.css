@@ -1,5 +1,5 @@
 table {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -19,7 +19,13 @@ table {
 }
 
 .content {
-    padding: 5% 5% 100%;
+    padding: 2.5% 5% 100%;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
 }
 
 .spinner-position {
@@ -33,4 +39,9 @@ table {
 
 .table.title {
     color: #000;
+}
+
+.example-stretched-tabs {
+    max-width: 500px;
+    margin-left: auto;
 }

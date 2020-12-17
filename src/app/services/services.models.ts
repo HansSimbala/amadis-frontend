@@ -31,3 +31,25 @@ export class SimpleCustomer {
     lastName: string;
     name: string;
 }
+
+export class SimpleOrder {
+    shippingDate: string;
+ //   orderState: string;
+    orderStateId: number;
+ //   orderType: number;
+    orderTypeId: number;
+    id: number;
+    customer: string;
+    contactNumber: string;
+    reference: string;
+    latitude: string;
+    longitude: string;
+    address: string;
+ //   orderDetail: SimpleOrderDetail[]
+}
+
+export class SimpleOrderDetail {
+    product: string;
+    unitPrice: string;
+    quantity: number;
+}
