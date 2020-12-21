@@ -27,9 +27,9 @@ export const roles = [
               slug: "/orders/list"
             },
             {
-              icon: "list_alt",
-              name: "Crear Pedidos",
-              slug: "/orders/create"
+              icon: "event",
+              name: "Horario Pedidos",
+              slug: "/orders/calendar"
             }
         ]
       }

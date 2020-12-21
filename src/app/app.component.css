@@ -10,6 +10,10 @@
 }
 
 .side-items {
+    width: 225px;
+}
+
+.side-nav {
     padding: 10px 50px 25px 20px;
 }
 

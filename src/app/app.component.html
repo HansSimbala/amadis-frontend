@@ -10,13 +10,7 @@
 
 <mat-sidenav-container>
 
-  <mat-sidenav #sidenav mode="over">
-
-    <!--  <mat-toolbar>
-      <mat-toolbar-row>
-        <h2> AMADIS </h2>
-      </mat-toolbar-row>
-    </mat-toolbar> -->
+  <mat-sidenav #sidenav mode="over" class="side-items">
 
     <mat-nav-list *ngFor="let rol of roles">
       <h2 matSubheader> {{ rol.name }} </h2>

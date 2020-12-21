@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { OrdersService } from 'src/app/services/orders.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SimpleOrder } from 'src/app/services/services.models';
@@ -17,6 +18,8 @@ export class ListComponent implements OnInit {
   isLoading: boolean;
   orderDataSource: MatTableDataSource<SimpleOrder>;
 
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
   constructor(private matDialog: MatDialog, private matSnackBar: MatSnackBar, private ordersService: OrdersService) { }
 
   private refreshTable(): void {
@@ -24,6 +27,7 @@ export class ListComponent implements OnInit {
     this.ordersService.listOrders().subscribe(response => {
       if (response.ok) {
         this.orderDataSource = new MatTableDataSource(response.data);
+        this.orderDataSource.paginator = this.paginator;
         this.isLoading = false;
       } else {
       }

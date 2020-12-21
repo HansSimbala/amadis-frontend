@@ -53,3 +53,8 @@ export class SimpleOrderDetail {
     unitPrice: string;
     quantity: number;
 }
+
+export class SimpleLogin {
+    email: string;
+    password: string;
+}
