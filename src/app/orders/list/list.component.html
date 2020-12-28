@@ -1,26 +1,13 @@
-<mat-toolbar>
-    <div>
-        <button mat-icon-button>
-            <mat-icon>add</mat-icon>
-        </button>
-
+<mat-button-toggle-group #group="matButtonToggleGroup">
+    <mat-button-toggle>
+        <mat-icon>add</mat-icon>
         <a class="nav-link"><span>Agregar Pedido</span></a>
-    </div>
-    <div>
-        <button mat-icon-button>
-            <mat-icon>receipt_long</mat-icon>
-        </button>
-
-        <a class="nav-link"><span>Realizar Contrato</span></a>
-    </div>
-    <div>
-        <button mat-icon-button>
-            <mat-icon>assignment</mat-icon>
-        </button>
-
+    </mat-button-toggle>
+    <mat-button-toggle>
+        <mat-icon>assignment</mat-icon>
         <a class="nav-link"><span>Solicitar Activos</span></a>
-    </div>
-</mat-toolbar>
+    </mat-button-toggle>
+</mat-button-toggle-group>
 <section class="content">
 
     <div>

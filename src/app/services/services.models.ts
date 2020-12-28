@@ -22,6 +22,18 @@ export class ServiceResponse<T> {
     status: string;
 }
 
+export class CreateContract {
+    shippingDate: string;
+    endDate: string;
+    customerId: number;
+    address: string;
+    reference: string;
+    latitude: string;
+    longitude: string;
+    orderTypeId: number;
+    orderDetail: SimpleOrderDetail[];
+}
+
 export class SimpleCustomer {
     birthdate: string;
     contactNumber: string;
@@ -49,8 +61,7 @@ export class SimpleOrder {
 }
 
 export class SimpleOrderDetail {
-    product: string;
-    unitPrice: string;
+    productPresentationId: number;
     quantity: number;
 }
 

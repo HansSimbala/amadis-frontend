@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CreateContractComponent } from './../create-contract/create-contract.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-calendar',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private matDialog: MatDialog) { }
+
+  createContract() {
+    this.matDialog.open(CreateContractComponent);
+  }
 
   ngOnInit(): void {
   }
