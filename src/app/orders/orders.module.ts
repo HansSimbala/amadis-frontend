@@ -5,6 +5,7 @@ import { FormsModule }   from '@angular/forms';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 import { OrdersRoutingModule } from './orders-routing.module';
+import { AgmCoreModule } from '@agm/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -12,6 +13,7 @@ import { MatNativeDateModule } from '@angular/material/core';import { MatDialogM
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
@@ -26,10 +28,14 @@ import { DeleteComponent } from './delete/delete.component';
 import { InspectComponent } from './inspect/inspect.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CreateContractComponent } from './create-contract/create-contract.component';
+import { CustomersListComponent } from './customers-list/customers-list.component';
 
 @NgModule({
-  declarations: [ListComponent, EditComponent, DeleteComponent, InspectComponent, CalendarComponent, CreateContractComponent],
+  declarations: [ListComponent, EditComponent, DeleteComponent, InspectComponent, CalendarComponent, CreateContractComponent, CustomersListComponent],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: 'KEY'
+    }),
     CommonModule,
     FlexLayoutModule,
     FormsModule,
@@ -42,6 +48,7 @@ import { CreateContractComponent } from './create-contract/create-contract.compo
     MatDividerModule,
     MatIconModule,
     MatInputModule,
+    MatListModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatSelectModule,

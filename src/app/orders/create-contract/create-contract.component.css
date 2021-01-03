@@ -1,3 +1,7 @@
+.button-create {
+    float: right;
+}
+
 .form-element {
     padding: 5px 0px 10px 2px;
     width: 100%;
@@ -5,4 +9,15 @@
 
 .fullwidth {
     width: 100%;
+}
+
+.customer-field {
+    width: 50%;
+    margin-right: 12px;
+}
+
+agm-map {
+    width: 600px;
+    height: 375px;
+    padding: 5px;
 }

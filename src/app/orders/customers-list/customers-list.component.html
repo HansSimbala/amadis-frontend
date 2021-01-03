@@ -1,0 +1,8 @@
+<div mat-subheader>Clientes</div>
+<mat-selection-list #shoes [multiple]="false">
+    <mat-list-option *ngFor="let folder of folders" [mat-dialog-close]="folder">
+        <mat-icon mat-list-icon>account_circle</mat-icon>
+        <div mat-line>{{folder.name}} {{folder.lastName}}</div>
+        <div mat-line> {{folder.lastName}} </div>
+    </mat-list-option>
+</mat-selection-list>

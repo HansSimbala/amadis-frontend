@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
+import { CustomersListComponent } from './../customers-list/customers-list.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 @Component({
@@ -14,11 +16,15 @@ export class CreateContractComponent implements OnInit {
     componentRestrictions: { country: 'PE' }
   }
 
-/*  latitude;
-  longitude;
-  zoom;
-*/
-  constructor() {
+  customer: string;
+  latitude: number;
+  longitude: number;
+  zoom: number;
+
+  constructor(private matDialog: MatDialog) {
+    this.latitude = -12.04318;
+    this.longitude = -77.02824;
+    this.zoom = 6;
   }
 
   ngOnInit(): void {
@@ -27,19 +33,20 @@ export class CreateContractComponent implements OnInit {
 
   public handleAddressChange(address: Address) {
     console.log(address);
-    //this.latitude = address.geometry.location.lat();
-    //this.longitude = address.geometry.location.lng();
+    this.latitude = address.geometry.location.lat();
+    this.longitude = address.geometry.location.lng();
+    this.zoom = 15;
   }
 
-  /*public setLocation() {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 15;
-      })
-    }
-  }*/
+  public openCustomers() {
+    const dialogRef = this.matDialog.open(CustomersListComponent);
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.customer = result.name + " " + result.lastName;
+    });
+
+  }
 
   onSubmit() {
     alert('Thanks for submitting! Data: ');

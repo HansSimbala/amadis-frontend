@@ -1,5 +1,5 @@
 <h3>Realizar Contrato</h3>
-<form (ngSubmit)="onSubmit()" #myForm="ngForm">
+<form #myForm="ngForm">
     <table class="fullwidth" cellspacing="0">
         <tr>
             <td>
@@ -20,6 +20,12 @@
             </td>
         </tr>
     </table>
+    <div>
+        <mat-form-field class="customer-field">
+            <input matInput placeholder="Cliente" value={{customer}}>
+        </mat-form-field>
+        <button mat-raised-button (click)="openCustomers()">Seleccionar</button>
+    </div>
     <mat-form-field class="form-element" appearance="fill">
         <mat-label>Tipo de pedido</mat-label>
         <mat-select>
@@ -31,7 +37,11 @@
         <input matInput placeholder="Dirección" ngx-google-places-autocomplete [options]='options'
             #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
     </mat-form-field>
+    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+        <agm-marker [latitude]="latitude" [longitude]="longitude">
+        </agm-marker>
+    </agm-map>
     <p>
-        <button type="submit" mat-raised-button>Submit</button>
+        <button type="submit" class="button-create" mat-raised-button>Registrar</button>
     </p>
 </form>
