@@ -1,1 +1,41 @@
-<p>inspect works!</p>
+<h3 mat-dialog-title>Inspeccionar Cliente</h3>
+<div mat-dialog-content>
+    <mat-form-field class="form-element" appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput readonly>
+        {{customer.name}}
+    </mat-form-field>
+    <mat-form-field class="form-element" appearance="outline">
+        <mat-label>Apellido</mat-label>
+        <input matInput readonly>
+        {{customer.lastName}}
+    </mat-form-field>
+    <mat-form-field class="form-element" appearance="outline">
+        <mat-label>Tipo de documento</mat-label>
+        <input matInput readonly>
+        {{customer.documentType}}
+    </mat-form-field>
+    <mat-form-field class="form-element" appearance="outline">
+        <mat-label>Nro. de documento</mat-label>
+        <input matInput readonly>
+        {{customer.document}}
+    </mat-form-field>
+    <div class="form-element">
+        <img matPrefix [src]=customer.documentPath (error)="updateUrl($event)">
+    </div>
+    <mat-form-field class="form-element" appearance="outline">
+        <mat-label>Teléfono</mat-label>
+        <input matInput readonly>
+        {{customer.contactNumber}}
+    </mat-form-field>
+    <mat-form-field class="form-element" appearance="outline">
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input matInput readonly>
+        {{customer.birthdate}}
+    </mat-form-field>
+    <mat-dialog-actions>
+        <div>
+            <button mat-raised-button color="primary" (click)="activateCustomer(customer.customerId)" [mat-dialog-close]>Activar Cliente</button>
+        </div>
+    </mat-dialog-actions>
+</div>

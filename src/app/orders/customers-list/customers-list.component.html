@@ -1,8 +1,19 @@
-<div mat-subheader>Clientes</div>
-<mat-selection-list #shoes [multiple]="false">
-    <mat-list-option *ngFor="let folder of folders" [mat-dialog-close]="folder">
-        <mat-icon mat-list-icon>account_circle</mat-icon>
-        <div mat-line>{{folder.name}} {{folder.lastName}}</div>
-        <div mat-line> {{folder.lastName}} </div>
-    </mat-list-option>
-</mat-selection-list>
+<div>
+    <h2>Selecciona Cliente</h2>
+</div>
+
+<!-- Loading -->
+<div *ngIf="isLoading">
+    <div>
+        <mat-spinner class="spinner-position"></mat-spinner>
+    </div>
+</div>
+<div [hidden]="isLoading">
+    <mat-selection-list [multiple]="false">
+        <mat-list-option *ngFor="let customer of customerList" [mat-dialog-close]="customer">
+            <mat-icon mat-list-icon>account_circle</mat-icon>
+            <div mat-line>{{customer.name}} {{customer.lastName}}</div>
+            <div mat-line>{{customer.documentType}}: {{customer.document}} </div>
+        </mat-list-option>
+    </mat-selection-list>
+</div>

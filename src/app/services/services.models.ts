@@ -1,3 +1,5 @@
+import { MatTableDataSource } from "@angular/material/table";
+
 /**
  * Base class for a service response.
  */
@@ -34,12 +36,25 @@ export class CreateContract {
     orderDetail: SimpleOrderDetail[];
 }
 
-export class SimpleCustomer {
+export class GenerateCustomerAccount {
+    lastName: string;
+    name: string;
+    email: string;
     birthdate: string;
     contactNumber: string;
     document: string;
     documentTypeId: number;
-    id: number;
+    documentFile: FormData;
+}
+
+export class SimpleCustomer {
+    birthdate: string;
+    contactNumber: string;
+    document: string;
+    documentPath: string;
+    documentType: string;
+    documentTypeId: number;
+    customerId: number;
     lastName: string;
     name: string;
 }
@@ -58,6 +73,19 @@ export class SimpleOrder {
     longitude: string;
     address: string;
  //   orderDetail: SimpleOrderDetail[]
+}
+
+export class SimpleRoute {
+    position: number;
+    shippingDate: string;
+    stops: number;
+    route: SimpleOrder[] | MatTableDataSource<SimpleOrder>;
+}
+
+export class SimpleProduct {
+    id: number;
+    price: number;
+    pathImage: string;
 }
 
 export class SimpleOrderDetail {

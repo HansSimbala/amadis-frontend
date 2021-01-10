@@ -1,0 +1,73 @@
+<section class="content">
+    <div class="form-flex">
+        <mat-card style="width: 500px;">
+            <mat-card-title style="text-align: center;">
+                Solicitud de cuenta de cliente
+            </mat-card-title>
+            <mat-card-content>
+                <p>
+                    <mat-form-field class="form-element">
+                        <input type="text" matInput placeholder="Nombre" [(ngModel)]="customer.name" name="name">
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field class="form-element">
+                        <input type="text" matInput placeholder="Apellido" [(ngModel)]="customer.lastName" name="lastName">
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field class="form-element" appearance="fill">
+                        <mat-label>Tipo de documento</mat-label>
+                        <mat-select [(value)]="customer.documentTypeId">
+                            <mat-option value="1">DNI</mat-option>
+                            <mat-option value="2">Carné de Extranjería</mat-option>
+                            <mat-option value="3">Pasaporte</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field class="form-element">
+                        <input type="text" matInput placeholder="Número de documento" [(ngModel)]="customer.document" name="document">
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field floatPlaceholder="never" appearance="outline" class="form-element">
+                        <mat-label>Subir DNI/CE/Pasaporte...</mat-label>
+                        <input [hidden]="true" (change)="onFileSelect($event)" type="file" accept="all/*" #fileSelect>
+                        <input readonly matInput [(ngModel)]="filename" placeholder="Subir DNI/CE/Pasaporte..." />
+                        <button *ngIf="this.base64File" (click)="this.base64File = null; this.filename = null" matSuffix type="button" mat-icon-button>
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <button matSuffix mat-icon-button (click)="fileSelect.click();" matTooltip="Seleccionar un archivo"
+                            [matTooltipPosition]="'above'">
+                            <mat-icon>file_upload</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field class="form-element" appearance="fill">
+                        <mat-label>Fecha de nacimiento</mat-label>
+                        <input matInput [matDatepicker]="picker" [(ngModel)]="customer.birthdate" name="birthdate">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field class="form-element">
+                        <input type="email" matInput placeholder="Correo" [(ngModel)]="customer.email" name="email">
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field class="form-element">
+                        <input type="text" matInput placeholder="Teléfono" [(ngModel)]="customer.contactNumber" name="contactNumber">
+                    </mat-form-field>
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="button-flex">
+                    <button mat-button (click)="generateCustomerAccount()">Registrar</button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</section>

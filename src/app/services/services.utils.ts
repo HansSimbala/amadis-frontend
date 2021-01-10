@@ -50,7 +50,7 @@ export class ServiceProxy {
         });
     }
 
-    sendPutRequest<T>(url: string, body: any): Observable<ServiceResponse<T>> {
+    sendPutRequest<T>(url: string, body?: any): Observable<ServiceResponse<T>> {
         // Build and return an observable, that also send the request
         return new Observable(subscriber => {
             this.httpClient

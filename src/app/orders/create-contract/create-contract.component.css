@@ -1,7 +1,3 @@
-.button-create {
-    float: right;
-}
-
 .form-element {
     padding: 5px 0px 10px 2px;
     width: 100%;
@@ -11,7 +7,7 @@
     width: 100%;
 }
 
-.customer-field {
+.custom-field {
     width: 50%;
     margin-right: 12px;
 }

@@ -1,47 +1,69 @@
-<h3>Realizar Contrato</h3>
-<form #myForm="ngForm">
-    <table class="fullwidth" cellspacing="0">
-        <tr>
-            <td>
-                <mat-form-field class="form-element" appearance="fill">
-                    <mat-label>Fecha de inicio</mat-label>
-                    <input matInput [matDatepicker]="picker1">
-                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                    <mat-datepicker #picker1></mat-datepicker>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field class="form-element" appearance="fill">
-                    <mat-label>Fecha de fin</mat-label>
-                    <input matInput [matDatepicker]="picker2">
-                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                    <mat-datepicker #picker2></mat-datepicker>
-                </mat-form-field>
-            </td>
-        </tr>
-    </table>
+<h3 mat-dialog-title>Realizar Contrato</h3>
+<form [formGroup]="createContractformGroup" mat-dialog-content>
     <div>
-        <mat-form-field class="customer-field">
-            <input matInput placeholder="Cliente" value={{customer}}>
+        <mat-form-field class="form-element" appearance="outline">
+            <mat-label>Cliente</mat-label>
+            <input matInput readonly formControlName="customerName">
+            <button matSuffix (click)="openCustomers()" mat-icon-button>
+                <mat-icon>supervised_user_circle</mat-icon>
+            </button>
+            <mat-error *ngIf="checkError('customerName', 'required')">Seleccione un cliente</mat-error>
         </mat-form-field>
-        <button mat-raised-button (click)="openCustomers()">Seleccionar</button>
     </div>
     <mat-form-field class="form-element" appearance="fill">
         <mat-label>Tipo de pedido</mat-label>
-        <mat-select>
+        <mat-select [(value)]="order.orderTypeId" formControlName="orderType">
             <mat-option value="1">Pedido al contado</mat-option>
             <mat-option value="2">Pedido por consignación</mat-option>
         </mat-select>
+        <mat-error *ngIf="checkError('orderType', 'required')">Seleccione un tipo de pedido</mat-error>
     </mat-form-field>
+    <div>
+        <mat-form-field class="form-element" appearance="fill">
+            <mat-label>Ingrese la vigencia del contrato</mat-label>
+            <mat-date-range-input [rangePicker]="picker" disabled>
+                <input matStartDate placeholder="Fecha de inicio" [(ngModel)]="order.shippingDate" name="shippingDate" [ngModelOptions]="{standalone: true}">
+                <input matEndDate placeholder="Fecha de fin" [(ngModel)]="order.endDate" name="endDate" [ngModelOptions]="{standalone: true}">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+        </mat-form-field>
+    </div>
     <mat-form-field class="form-element">
-        <input matInput placeholder="Dirección" ngx-google-places-autocomplete [options]='options'
-            #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
+        <input 
+        formControlName="address" 
+        matInput 
+        placeholder="Dirección" 
+        ngx-google-places-autocomplete 
+        [options]='options'
+        #placesRef="ngx-places"
+        (ngModelChange)="modelChangeFn()"
+        (onAddressChange)="handleAddressChange($event)" />
+        <mat-error *ngIf="checkError('address', 'required')">Ingrese una dirección</mat-error>
+        <!-- <mat-error *ngIf="checkError('address', 'invalidAddress')">Ingrese una dirección válida</mat-error> -->
     </mat-form-field>
-    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
-        <agm-marker [latitude]="latitude" [longitude]="longitude">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <agm-marker [latitude]="lat" [longitude]="lng">
         </agm-marker>
     </agm-map>
-    <p>
-        <button type="submit" class="button-create" mat-raised-button>Registrar</button>
-    </p>
+    <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Detalle del pedido</mat-label>
+        <input readonly matInput>
+        <button (click)="openProducts()" matSuffix type="button" mat-icon-button>
+            <mat-icon>shopping_cart</mat-icon>
+        </button>
+        <mat-list>
+            <mat-list-item *ngFor="let item of orderDetail">
+                <mat-icon mat-list-icon>sports_bar</mat-icon>
+                <div mat-line>Id:{{item.productPresentationId}}</div>
+                <div mat-line>Cantidad: {{item.quantity}}</div>
+            </mat-list-item>
+        </mat-list>
+    </mat-form-field>
+    <div mat-dialog-actions>
+        <button 
+        mat-raised-button (click)="createContract()"
+        [disabled]="!createContractformGroup.valid"
+        >Registrar</button>
+    </div>
 </form>

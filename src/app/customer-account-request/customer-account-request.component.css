@@ -1,0 +1,19 @@
+.content {
+    padding: 2.5% 5% 100%;
+}
+
+.form-flex {
+    display: flex;
+    justify-content: center;
+    margin: 25px 25px;
+}
+
+.form-element {
+    padding: 5px 0px 10px 2px;
+    width: 100%;
+}
+
+.button-flex {
+    display: flex;
+    justify-content: flex-end;
+}
