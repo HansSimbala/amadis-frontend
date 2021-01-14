@@ -41,9 +41,10 @@ export class CreateContractComponent implements OnInit {
 
   createContractformGroup: FormGroup;
   order = new CreateContract();
-  orderDetail: SimpleOrderDetail[] = [];
+  newProductsList: SimpleProduct[] = [];
   productsList: SimpleProduct[] = [];
   isValidAddress: boolean;
+  addressText: string;
   lat: number;
   lng: number;
   zoom: number;
@@ -68,11 +69,11 @@ export class CreateContractComponent implements OnInit {
   }
 
   public handleAddressChange(address: Address) {
+    this.addressText = address.formatted_address.toString();
     this.lat = address.geometry.location.lat();
     this.lng = address.geometry.location.lng();
     this.zoom = 15;
     this.isValidAddress = true;
-    console.log("handle", this.isValidAddress);
   }
 
   public openCustomers() {
@@ -91,17 +92,21 @@ export class CreateContractComponent implements OnInit {
     const dialogRef = this.matDialog.open(ProductsListComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      this.orderDetail = result;
-      console.log('The dialog was closed', JSON.stringify(this.orderDetail));
+      this.newProductsList = result;
+      console.log('The dialog was closed', JSON.stringify(this.newProductsList));
     });
-
   }
 
   createContract() {
-    this.order.address = this.createContractformGroup.controls.address.value;
+    this.order.address = this.addressText;
     this.order.latitude = this.lat.toString();
     this.order.longitude = this.lng.toString();
-    this.order.orderDetail = this.orderDetail;
+    this.order.orderDetail = this.newProductsList.map((product) => {
+      return {
+        productPresentationId: product.id,
+        quantity: product.quantity
+      };
+    });
     if (this.isValidAddress == true) {
       this.ordersService.createContract(this.order).subscribe(response => {
         if (response.ok) {

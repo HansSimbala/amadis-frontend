@@ -43,6 +43,8 @@ export class ListComponent implements OnInit {
     var orderStateId = 0;
     if(tab==="Creados") {
       orderStateId = 1;
+    } else if(tab==="Aprobado") {
+      orderStateId = 2;
     } else if(tab==="En ruta") {
       orderStateId = 5;
     } else if (tab==="Pendiente de pago") {

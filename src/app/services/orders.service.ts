@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ServiceResponse, SimpleOrder, SimpleOrderDetail, CreateContract, SimpleProduct, SimpleRoute } from './services.models';
+import { ServiceResponse, SimpleOrder, SimpleOrderDetail, CreateContract, SimpleProduct, SimpleRoute, GenerateRoutes } from './services.models';
 import { HttpParams } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Observable } from 'rxjs';
@@ -18,12 +18,17 @@ export class OrdersService {
 
   createContract(contract: CreateContract): Observable<ServiceResponse<any>> {
     // Send request
-    return this.serviceProxy.sendPostRequest<any>(this.endpointUrl, contract);
+    return this.serviceProxy.sendPostRequest<any>(`${this.endpointUrl}/contract`, contract);
   }
 
   deleteOrder(orderId: number): Observable<ServiceResponse<any>> {
     // Send request
     return this.serviceProxy.sendDeleteRequest<any>(`${this.endpointUrl}/${orderId}`);
+  }
+
+  generateRoutes(generateRoutes: GenerateRoutes): Observable<ServiceResponse<any>> {
+    // Send request
+    return this.serviceProxy.sendPostRequest<any>(`${this.endpointUrl}/routes`, generateRoutes);
   }
 
   listOrderRoutes(shippingDate: string): Observable<ServiceResponse<SimpleRoute[]>> {
@@ -40,6 +45,14 @@ export class OrdersService {
     if (orderStateId) params = params.append('orderStateId', orderStateId.toString());
     // Send request
     return this.serviceProxy.sendGetRequest<SimpleOrder[]>(this.endpointUrl, params);
+  }
+
+  listRoutes(shippingDate: string): Observable<ServiceResponse<SimpleRoute[]>> {
+    // Generate request params
+    let params = new HttpParams();
+    if (shippingDate) params = params.append('shippingDate', shippingDate);
+    // Send request
+    return this.serviceProxy.sendGetRequest<SimpleRoute[]>(`${this.endpointUrl}/routes/list`, params);
   }
 
   listProducts(): Observable<ServiceResponse<SimpleProduct[]>> {

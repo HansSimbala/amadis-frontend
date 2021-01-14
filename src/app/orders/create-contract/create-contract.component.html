@@ -30,7 +30,7 @@
         </mat-form-field>
     </div>
     <mat-form-field class="form-element">
-        <input 
+        <input
         formControlName="address" 
         matInput 
         placeholder="Dirección" 
@@ -53,9 +53,10 @@
             <mat-icon>shopping_cart</mat-icon>
         </button>
         <mat-list>
-            <mat-list-item *ngFor="let item of orderDetail">
+            <mat-list-item *ngFor="let item of newProductsList">
                 <mat-icon mat-list-icon>sports_bar</mat-icon>
-                <div mat-line>Id:{{item.productPresentationId}}</div>
+                <div mat-line>{{item.product.name}}</div>
+                <div mat-line>{{item.presentation.name}}</div>
                 <div mat-line>Cantidad: {{item.quantity}}</div>
             </mat-list-item>
         </mat-list>

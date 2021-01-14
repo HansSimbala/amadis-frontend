@@ -15,15 +15,12 @@
             <div mat-line>{{productItem.product.name}}</div>
             <div mat-line>{{productItem.presentation.name}}</div>
             <div mat-line>Precio: {{productItem.price}} </div>
-            <mat-form-field>
-                <mat-label>Cantidad</mat-label>
-                <input #quantity type="number" matInput>
-            </mat-form-field>
-            <button mat-mini-fab color="primary" (click)="addProduct(productItem.id, quantity.value)"><mat-icon>shopping_cart</mat-icon></button>
+            <button mat-icon-button (click)="removeProduct(productItem)"><mat-icon>remove_circle_outline</mat-icon></button>
+            <div>{{productItem.quantity || 0}}</div>
+            <button mat-icon-button (click)="addProduct(productItem)"><mat-icon>add_circle_outline</mat-icon></button>
         </mat-list-item>
     </mat-list>
 </div>
 <p>
-    <button mat-raised-button [mat-dialog-close]="orderDetail">Agregar</button>
+    <button style="float: right;" mat-icon-button [mat-dialog-close]="newProductsList"><mat-icon>shopping_cart</mat-icon></button>
 </p>
-<!-- [mat-dialog-close]="product" -->

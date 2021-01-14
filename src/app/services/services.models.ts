@@ -47,6 +47,10 @@ export class GenerateCustomerAccount {
     documentFile: FormData;
 }
 
+export class GenerateRoutes {
+    shippingDate: string;
+}
+
 export class SimpleCustomer {
     birthdate: string;
     contactNumber: string;
@@ -86,6 +90,7 @@ export class SimpleProduct {
     id: number;
     price: number;
     pathImage: string;
+    quantity: number;
 }
 
 export class SimpleOrderDetail {

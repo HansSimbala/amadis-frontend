@@ -31,10 +31,10 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { CreateContractComponent } from './create-contract/create-contract.component';
 import { CustomersListComponent } from './customers-list/customers-list.component';
 import { ProductsListComponent } from './products-list/products-list.component';
-import { RoutesComponent } from './routes/routes.component';
+import { ConfirmRouteDialogComponent, RoutesComponent } from './routes/routes.component';
 
 @NgModule({
-  declarations: [ListComponent, EditComponent, DeleteComponent, InspectComponent, CalendarComponent, CreateContractComponent, CustomersListComponent, ProductsListComponent, RoutesComponent],
+  declarations: [ListComponent, EditComponent, DeleteComponent, InspectComponent, CalendarComponent, CreateContractComponent, CustomersListComponent, ProductsListComponent, RoutesComponent, ConfirmRouteDialogComponent],
   imports: [
     AgmCoreModule.forRoot({
       apiKey: 'KEY'

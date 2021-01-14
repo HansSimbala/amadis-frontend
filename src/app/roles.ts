@@ -1,5 +1,16 @@
 export const roles = [
   {
+    name: "Navegación",
+    description: "Navegación.",
+    permissions: [
+      {
+        icon: "dashboard",
+        name: "Dashboard",
+        slug: "/dashboard"
+      }
+    ]
+  },
+  {
     name: "Clientes",
     description: "Gestionar los clientes.",
     permissions: [

@@ -9,9 +9,8 @@ import { SimpleOrderDetail, SimpleProduct } from 'src/app/services/services.mode
 })
 export class ProductsListComponent implements OnInit {
 
-  orderDetail: SimpleOrderDetail[] = [];
-  orderDetailItem = new SimpleOrderDetail();
   productsList: SimpleProduct[] = [];
+  newProductsList: SimpleProduct[] = [];
   isLoading: boolean;
 
   constructor(private ordersService: OrdersService) { }
@@ -21,9 +20,6 @@ export class ProductsListComponent implements OnInit {
       if (response.ok) {
         this.productsList = response.data;
         this.isLoading = false;
-        console.log("response: ", JSON.stringify(this.productsList)); 
-      } else {
-        console.log("response: ", response.message); 
       }
     });
   }
@@ -33,10 +29,42 @@ export class ProductsListComponent implements OnInit {
     this.refreshProductsList();
   }
 
-  addProduct(productPresentationId: number, quantity: number) {
-    this.orderDetailItem.productPresentationId = productPresentationId;
-    this.orderDetailItem.quantity = quantity;
-    this.orderDetail.push(this.orderDetailItem);
+  addProduct(productPresentation: SimpleProduct) {
+    if(!productPresentation.quantity) {
+      productPresentation.quantity = 1;
+    } else {
+      productPresentation.quantity += 1;
+    }
+    let findProduct = this.newProductsList.findIndex(oD => oD.id === productPresentation.id);
+    if (findProduct != -1) {
+      this.newProductsList[findProduct].quantity = productPresentation.quantity;
+    } else {
+      const newProductItem = productPresentation;
+      this.newProductsList.push(newProductItem);
+    }
+  }
+
+  removeProduct(productPresentation: SimpleProduct) {
+    if(!productPresentation.quantity) {
+      productPresentation.quantity = 0;
+    } else {
+      if(productPresentation.quantity > 0) {
+        productPresentation.quantity -= 1;
+        let findProduct = this.newProductsList.findIndex(oD => oD.id === productPresentation.id);
+        if (productPresentation.quantity != 0) {
+          if (findProduct != -1) {
+            this.newProductsList[findProduct].quantity = productPresentation.quantity;
+          } else {
+            const newProductItem = productPresentation;
+            this.newProductsList.push(newProductItem);
+          }
+        } else {
+          if (findProduct != -1) {
+            this.newProductsList.splice(findProduct, 1);
+          }
+        }      
+      }
+    }
   }
 
 }
